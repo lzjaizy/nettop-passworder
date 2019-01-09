@@ -1,0 +1,48 @@
+#Ĭ��ʹ������
+spring:
+    profiles:
+        active: dev
+
+    datasource:
+        url: jdbc:mysql://localhost:3306/passworder?serverTimezone=GMT%2B8
+        username: root
+        password: 1qazxsw2
+        driver-class-name: com.mysql.jdbc.Driver
+        type: com.alibaba.druid.pool.DruidDataSource
+
+    jpa:
+        hibernate:
+            ddl-auto: update
+            naming:
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl #按字段名字建表
+        show-sql: true
+        database: mysql
+        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+
+    thymeleaf:
+        cache: false
+
+    messages:
+        basename: myconfig
+
+    redis:
+        database: 0
+        host: 127.0.0.1
+        jedis:
+            pool:
+                #最大连接数据库连接数,设 0 为没有限制
+                max-active: 8
+                #最大等待连接中的数量,设 0 为没有限制
+                max-idle: 8
+                #最大建立连接等待时间。如果超过此时间将接到异常。设为-1表示无限制。
+                max-wait: -1
+                #最小等待连接中的数量,设 0 为没有限制
+                min-idle: 0
+        password: '1qazxsw2'
+        port: 6379
+        #连接超时毫秒
+        timeout: 10000
+
+mybatis:
+    typeAliasesPackage: com.nettop.demo.entity
+    mapperLocations: classpath:mapper/*.xml
