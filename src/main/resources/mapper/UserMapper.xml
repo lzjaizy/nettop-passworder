@@ -14,16 +14,16 @@
         select
         <include refid="Base_Column_List" />
         from user_t
-        where id = #{id,jdbcType=INTEGER}
+        where id = #{id,jdbcType=VARCHAR}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
         delete from user_t
-        where id = #{id,jdbcType=INTEGER}
+        where id = #{id,jdbcType=VARCHAR}
     </delete>
     <insert id="insert" parameterType="com.nettop.demo.entity.User" >
         insert into user_t (id, user_name, password,
         age)
-        values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+        values (#{id,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
         #{age,jdbcType=INTEGER})
     </insert>
     <insert id="insertSelective" parameterType="com.nettop.demo.entity.User" >
@@ -44,7 +44,7 @@
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
             <if test="id != null" >
-                #{id,jdbcType=INTEGER},
+                #{id,jdbcType=VARCHAR},
             </if>
             <if test="userName != null" >
                 #{userName,jdbcType=VARCHAR},
@@ -70,13 +70,13 @@
                 age = #{age,jdbcType=INTEGER},
             </if>
         </set>
-        where id = #{id,jdbcType=INTEGER}
+        where id = #{id,jdbcType=VARCHAR}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.nettop.demo.entity.User" >
         update user_t
         set user_name = #{userName,jdbcType=VARCHAR},
         password = #{password,jdbcType=VARCHAR},
         age = #{age,jdbcType=INTEGER}
-        where id = #{id,jdbcType=INTEGER}
+        where id = #{id,jdbcType=VARCHAR}
     </update>
 </mapper>

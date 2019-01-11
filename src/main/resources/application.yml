@@ -4,9 +4,9 @@ spring:
         active: dev
 
     datasource:
-        url: jdbc:mysql://localhost:3306/passworder?serverTimezone=GMT%2B8
+        url: jdbc:mysql://47.75.71.198:3306/passworder?serverTimezone=GMT%2B8
         username: root
-        password: 1qazxsw2
+        password: Lzjaizy2009
         driver-class-name: com.mysql.jdbc.Driver
         type: com.alibaba.druid.pool.DruidDataSource
 
@@ -21,13 +21,15 @@ spring:
 
     thymeleaf:
         cache: false
+        prefix: classpath:/static/
+        suffix: .html
 
     messages:
         basename: myconfig
 
     redis:
         database: 0
-        host: 127.0.0.1
+        host: 47.75.71.198
         jedis:
             pool:
                 #最大连接数据库连接数,设 0 为没有限制
@@ -38,7 +40,7 @@ spring:
                 max-wait: -1
                 #最小等待连接中的数量,设 0 为没有限制
                 min-idle: 0
-        password: '1qazxsw2'
+        password: 'Lzjaizy2009'
         port: 6379
         #连接超时毫秒
         timeout: 10000

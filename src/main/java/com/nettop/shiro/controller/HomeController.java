@@ -24,14 +24,14 @@ public class HomeController {
     @RequestMapping("/403")
     public String unauthorizedRole(){
         System.out.println("------没有权限-------");
-        return "/user/403";
+        return "/html/403";
     }
 
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public String toLogin(Map<String, Object> map, HttpServletRequest request)
     {
         loginService.logout();
-        return "/user/login";
+        return "/html/login";
     }
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
@@ -48,13 +48,13 @@ public class HomeController {
         else {
             map.put("msg",loginResult.getResult());
             map.put("userName",userName);
-            return "/user/login";
+            return "/html/login";
         }
     }
 
     @RequestMapping("/logout")
     public String logOut(HttpSession session) {
         loginService.logout();
-        return "/user/login";
+        return "/html/login";
     }
 }
