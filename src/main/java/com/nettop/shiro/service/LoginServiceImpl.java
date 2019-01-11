@@ -44,7 +44,7 @@ public class LoginServiceImpl implements LoginService {
         }catch (UnknownAccountException e)
         {
             e.printStackTrace();
-            msg = "UnknownAccountException -- > 账号不存在：";
+            msg = "UnknownAccountException -- > 账号不存在：" + userName;
         }
         catch (IncorrectCredentialsException e)
         {
