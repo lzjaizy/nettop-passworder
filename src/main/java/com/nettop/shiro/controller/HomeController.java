@@ -37,7 +37,7 @@ public class HomeController {
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public String login(Map<String, Object> map,HttpServletRequest request) throws Exception{
         System.out.println("login()");
-        String userName = request.getParameter("userName");
+        String userName = request.getParameter("username");
         String password = request.getParameter("password");
 
         LoginResult loginResult = loginService.login(userName,password);
@@ -47,7 +47,7 @@ public class HomeController {
         }
         else {
             map.put("msg",loginResult.getResult());
-            map.put("userName",userName);
+            map.put("username",userName);
             return "/html/login";
         }
     }
