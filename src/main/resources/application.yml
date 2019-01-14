@@ -40,7 +40,6 @@ spring:
                 max-wait: -1
                 #最小等待连接中的数量,设 0 为没有限制
                 min-idle: 0
-        password: 'Lzjaizy2009'
         port: 6379
         #连接超时毫秒
         timeout: 10000
