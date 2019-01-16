@@ -30,6 +30,7 @@ spring:
     redis:
         database: 0
         host: 47.75.71.198
+        password: lzjaizy2009
         jedis:
             pool:
                 #最大连接数据库连接数,设 0 为没有限制

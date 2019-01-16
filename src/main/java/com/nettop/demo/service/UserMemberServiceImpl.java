@@ -18,8 +18,8 @@ public class UserMemberServiceImpl implements UserMemberService {
     private RedisUtil redisUtil;
 
     public User getUserById(String userId) {
-//        Object object = redisUtil.get("lzj");
-//        System.out.println(object);
+        Object object = redisUtil.get("lzj");
+        System.out.println(object);
         return userMapper.selectByPrimaryKey(userId);
     }
 
