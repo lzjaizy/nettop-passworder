@@ -4,9 +4,9 @@ spring:
         active: dev
 
     datasource:
-        url: jdbc:mysql://47.75.71.198:3306/passworder?serverTimezone=GMT%2B8
+        url: jdbc:mysql://180.168.156.212:2366/passworder?serverTimezone=GMT%2B8
         username: root
-        password: Lzjaizy2009
+        password: root
         driver-class-name: com.mysql.jdbc.Driver
         type: com.alibaba.druid.pool.DruidDataSource
 
