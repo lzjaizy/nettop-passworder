@@ -1,6 +1,6 @@
 package com.nettop.demo.entity;
 
-public class User extends BaseEntity {
+public class User{
     private String id;
 
     private String userName;

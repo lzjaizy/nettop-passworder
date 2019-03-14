@@ -3,6 +3,7 @@ package com.nettop.demo.service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.nettop.demo.dao.UserMapper;
+import com.nettop.demo.entity.PageEntity;
 import com.nettop.demo.entity.User;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +21,8 @@ public class UserMemberServiceImpl implements UserMemberService {
         return userMapper.selectByPrimaryKey(userId);
     }
 
-    public Page<User> getUsers(User user) {
-//        PageHelper.startPage(Integer.parseInt(pageNo), Integer.parseInt(pageSize));
+    public Page<User> getUsers(PageEntity pageEntity) {
+        PageHelper.startPage(pageEntity.getPageNo(),pageEntity.getPageSize());
         return userMapper.selectAllUsers();
     }
 

@@ -16,7 +16,7 @@
         from user_t
         where id = #{id,jdbcType=VARCHAR}
     </select>
-    <select id="selectAllUsers" resultMap="com.nettop.demo.entity.User" parameterType="com.nettop.demo.entity.User">
+    <select id="selectAllUsers" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
         from user_t
