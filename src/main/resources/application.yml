@@ -14,6 +14,10 @@ spring:
         encoding:
             charset: utf-8
             enabled: true
+        multipart:
+          enabled: true
+          max-file-size: 100Mb
+          max-request-size: 100Mb
 
     jpa:
         hibernate:
@@ -63,3 +67,5 @@ pagehelper:
     reasonable: true
     support-methods-arguments: true
     params: count=countSql
+
+filePath: /Users/jason/upload/

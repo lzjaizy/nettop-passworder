@@ -20,6 +20,26 @@
         </tr>
         </thead>
     </table>
+
+    <a href="#button" class="button icon arrowup" onclick="uploadidalogonline();">上传学习证明材料</a>
+
+
+    <div id="uploadonlineinfo" class="easyui-window" style="width:380px;padding:10px 40px" closed="true">
+        <form id="fam" method="post" enctype="multipart/form-data">
+            <table border="0" style="margin-top:4px;" width="100%" align="center">
+                <tr>
+                    <td>
+                        <input class="easyui-filebox" name="onlinefilename" data-options="prompt:'文件上传'" style="width:100%"></input>
+                    </td>
+
+                </tr>
+            </table>
+        </form>
+
+        <div data-options="region:'south',border:false" style="text-align:center;padding:5px 0 0;">
+            <a class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" onclick="uploadonline();" style="width:80px">上传</a>
+        </div>
+    </div>
 </body>
 <script>
     $(function(){
@@ -42,5 +62,36 @@
         });
     });
 
+    function uploadidalogonline() {
+        $('#uploadonlineinfo').window('open').dialog('setTitle','文件上传');
+
+    }
+
+    function uploadonline() {
+        var add="/user/onlineupload";
+        $('#fam').form('submit',{
+            url: add,
+            onSubmit: function(){
+
+            },
+            success: function(result){
+                var result = eval('('+result+')');
+
+                if (result.success){
+                    $('#uploadonlineinfo').window('close');
+                    $('#dg2').datagrid('reload');
+                    $.messager.show({
+                        title: 'Success',
+                        msg: '上传成功'
+                    });
+                } else {
+                    $.messager.show({
+                        title: 'Error',
+                        msg: '文件不能为空，请重新选择文件！'
+                    });
+                }
+            }
+        });
+    }
 </script>
 </html>
