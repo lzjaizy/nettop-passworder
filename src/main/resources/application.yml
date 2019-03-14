@@ -4,11 +4,16 @@ spring:
         active: dev
 
     datasource:
-        url: jdbc:mysql://180.168.156.212:2366/passworder?serverTimezone=GMT%2B8
+        url: jdbc:mysql://180.168.156.212:2366/passworder?serverTimezone=GMT%2B8&autoReconnect=true
         username: root
         password: root
         driver-class-name: com.mysql.jdbc.Driver
         type: com.alibaba.druid.pool.DruidDataSource
+
+    http:
+        encoding:
+            charset: utf-8
+            enabled: true
 
     jpa:
         hibernate:
@@ -48,3 +53,13 @@ spring:
 mybatis:
     typeAliasesPackage: com.nettop.demo.entity
     mapperLocations: classpath:mapper/*.xml
+
+shiro:
+    cas: http://192.168.0.42:8080/sso
+    server: http://127.0.0.1:8080
+
+pagehelper:
+    helper-dialect: mysql
+    reasonable: true
+    support-methods-arguments: true
+    params: count=countSql

@@ -16,6 +16,12 @@
         from user_t
         where id = #{id,jdbcType=VARCHAR}
     </select>
+    <select id="selectAllUsers" resultMap="com.nettop.demo.entity.User" parameterType="com.nettop.demo.entity.User">
+        select
+        <include refid="Base_Column_List" />
+        from user_t
+        where 1=1
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
         delete from user_t
         where id = #{id,jdbcType=VARCHAR}
