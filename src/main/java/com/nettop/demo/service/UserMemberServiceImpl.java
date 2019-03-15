@@ -22,7 +22,12 @@ public class UserMemberServiceImpl implements UserMemberService {
     }
 
     public Page<User> getUsers(PageEntity pageEntity) {
-        PageHelper.startPage(pageEntity.getPageNo(),pageEntity.getPageSize());
+        try {
+            PageHelper.startPage(pageEntity.getPageNo(),pageEntity.getPageSize());
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return userMapper.selectAllUsers();
     }
 

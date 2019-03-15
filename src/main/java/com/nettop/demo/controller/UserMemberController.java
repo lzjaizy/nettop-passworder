@@ -6,12 +6,11 @@ import com.nettop.demo.entity.User;
 import com.nettop.demo.service.UserMemberService;
 import com.nettop.utils.PageUtils;
 import com.nettop.utils.UploadUtils;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +24,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@Api(tags = "UserMemberController", description = "UserMemberController | 通过用户来测试swagger")
 @RequestMapping("/user")
 public class UserMemberController {
     @Resource
@@ -33,15 +33,17 @@ public class UserMemberController {
     @Value("${filePath}")
     String filePath;
 
-    @RequestMapping("/showUser")
+    @RequestMapping(value = "/showUser", method = RequestMethod.GET)
+    @ApiOperation(value="根据用户id查询用户", notes="根据用户id查询用户")
+    @ApiImplicitParam(name = "id", value = "用户id", required = true, dataType = "String")
     @ResponseBody
-    public User toIndex(HttpServletRequest request){
-        String userId = request.getParameter("id");
+    public User toIndex(@RequestParam(value = "id") String id){
+        String userId = id;
         User user = userService.getUserById(userId);
         return user;
     }
 
-    @RequestMapping (value = "searchPersonList")
+    @RequestMapping (value = "/searchPersonList",method = RequestMethod.POST)
     @ResponseBody
     public Map<String,Object> searchPersonList(HttpServletRequest request){
         Map<String, Object> result = new HashMap<String, Object>();
