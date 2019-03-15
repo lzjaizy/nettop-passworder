@@ -1,14 +1,12 @@
 package com.nettop.demo.controller;
 
-import com.github.pagehelper.PageInfo;
-import com.nettop.demo.entity.PageEntity;
 import com.nettop.demo.entity.User;
 import com.nettop.demo.service.UserMemberService;
 import com.nettop.utils.PageUtils;
 import com.nettop.utils.UploadUtils;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,7 +33,7 @@ public class UserMemberController {
 
     @RequestMapping(value = "/showUser", method = RequestMethod.GET)
     @ApiOperation(value="根据用户id查询用户", notes="根据用户id查询用户")
-    @ApiImplicitParam(name = "id", value = "用户id", required = true, dataType = "String")
+    @ApiParam(name = "id", value = "用户id", required = true)
     @ResponseBody
     public User toIndex(@RequestParam(value = "id") String id){
         String userId = id;
