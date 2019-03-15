@@ -44,20 +44,15 @@ public class UserMemberController {
     @RequestMapping (value = "/searchPersonList",method = RequestMethod.POST)
     @ResponseBody
     public Map<String,Object> searchPersonList(HttpServletRequest request){
-        Map<String, Object> result = new HashMap<String, Object>();
-
         // 调用service方法，获取人员记录
         List<User> list =  userService.getUsers(PageUtils.getPageInfos(request));
-        result = PageUtils.getPageResult(list);
+        Map<String, Object> result = PageUtils.getPageResult(list);
         return result;
     }
 
     @RequestMapping(value="/onlineupload", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String,String> onlineupload(@RequestParam("onlinefilename") MultipartFile file,
-                                           HttpServletRequest request) {
-//        String contentType = file.getContentType();
-
+    public Map<String,String> onlineupload(@RequestParam("onlinefilename") MultipartFile file) {
         Map<String,String> map=new HashMap<>();
         String fileName = file.getOriginalFilename();
         System.out.println("fileName"+fileName);
@@ -66,6 +61,7 @@ public class UserMemberController {
             UploadUtils.uploadFile(file.getBytes(), filePath, fileName);
         } catch (Exception e) {
             // TODO: handle exception
+            e.printStackTrace();
         }
         //返回json
         System.out.println("file + success!");
